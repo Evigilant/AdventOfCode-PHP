@@ -6,7 +6,7 @@
 
 <body>
     <?php
-    require __DIR__ . '/utils/adventUtils.php';
+    require __DIR__ . 'shared/utils/adventUtils.php';
 
     $depths = getArray("input.txt");
     
