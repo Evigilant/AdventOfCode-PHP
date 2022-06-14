@@ -14,7 +14,26 @@
         }
         return $fileArray;
     }
+    function get_array_deliminited_by_space($filename){
+        //open file
+        $inputFile = fopen($filename, "r") or die("Unable to open file!");
 
+        $fileArray[] = null;
+        while(($line=fgets($inputFile))!= false){
+            $fileArray[] = explode(' ', $line);
+        }
+        return $fileArray;
+    }
+    function get_move_command_array_from_filename($filename){
+        $inputArray = get_array_deliminited_by_space($filename);
+
+        $arrayOfCommands[] = null;
+    
+        foreach($inputArray as $mov){
+            $arrayOfCommands[] = new MoveCommand($mov[0], $mov[1]);
+        }
+        return $arrayOfCommands;
+    }
     function countHowManyNextIsLargerInList($depths)
     {
         $incrCounter = 0;
